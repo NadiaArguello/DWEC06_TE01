@@ -1,0 +1,16 @@
+<header>
+    <div><img src="assets/img/logo_header.png" /></div>
+    <nav>
+        <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+        <a [routerLink]="['/pokedex']" routerLinkActive="active">Pokedex</a>
+        <a [routerLink]="['/juegos']" routerLinkActive="active">Juegos</a>
+        <a [routerLink]="['/entrenadores']" routerLinkActive="active">Entrenadores</a>
+    </nav>
+</header>
+<main>
+    <!-- Contenedor donde se renderizan las rutas -->
+    <router-outlet></router-outlet>
+</main>
+<footer>
+    <h3>Nadia Judith Argüello Pardo | Creative Commons Attribution 4.0 International (CC BY 4.0)</h3>
+</footer>

@@ -1,0 +1,29 @@
+<h1>Detalle del entrenador</h1>
+
+<p *ngIf="cargando">Cargando...</p>
+<p class="mensajeError" *ngIf="error">{{ error }}</p>
+
+<div *ngIf="item && !cargando" class="detalle">
+    <div class="avatar-detalle">
+        <img [src]="item.avatar" (error)="$any($event.target).src='assets/img/juegos/placeholder.jpg'" />
+    </div>
+    <div class="datos-detalle">
+        <h2>{{ item.nombre }} {{ item.apellidos }}</h2>
+        <p class="etiqueta-detalle"><strong>Edad:</strong> {{ item.edad }}</p>
+        <p class="etiqueta-detalle"><strong>Región:</strong> {{ item.region }}</p>
+        <p class="etiqueta-detalle"><strong>Pokémon favorito:</strong> {{ item.pokemonFavorito }}</p>
+
+        <!-- Sprite del Pokémon favorito (obtenido desde PokéAPI) -->
+        <p *ngIf="cargandoPokemon">Cargando imagen...</p>
+        <div class="img-pokemon">
+            <img *ngIf="spriteFavorito" [src]="spriteFavorito" alt="sprite favorito" width="200" height="200" />
+        </div>
+        <div class="acciones">
+            <button class="boton" [routerLink]="['/entrenadores']">Volver</button>
+            <button class="boton" [routerLink]="['/entrenadores', item.id, 'editar']">Editar</button>
+        </div>
+    </div>
+    <div class="pokelogo">
+        <img src="assets/img/pokemon_logo.png" />
+    </div>
+</div>

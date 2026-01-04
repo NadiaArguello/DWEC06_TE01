@@ -1,0 +1,64 @@
+<h1>Juegos</h1>
+
+<!-- Barra de filtros: se aplica en tiempo real al escribir o cambiar selects -->
+<section class="barra-filtros seccion">
+    <h2>Filtros</h2>
+
+    <div class="campo">
+        <label><strong>Buscar</strong></label>
+        <input type="text" [(ngModel)]="texto" (input)="aplicarFiltros()" placeholder="Nombre, región o consola..." />
+    </div>
+
+    <div class="campo">
+        <label><strong>Generación</strong></label>
+        <select [(ngModel)]="gen" (change)="aplicarFiltros()">
+      <option value="all">Todas</option>
+      <option *ngFor="let g of generaciones" [value]="g">{{ g }}</option>
+    </select>
+    </div>
+
+    <div class="campo">
+        <label><strong>Consola</strong></label>
+        <select [(ngModel)]="consola" (change)="aplicarFiltros()">
+      <option value="all">Todas</option>
+      <option *ngFor="let c of consolas" [value]="c">{{ c }}</option>
+    </select>
+    </div>
+
+    <div class="campo">
+        <label><strong>Región</strong></label>
+        <select [(ngModel)]="region" (change)="aplicarFiltros()">
+      <option value="all">Todas</option>
+      <option *ngFor="let r of regiones" [value]="r">{{ r }}</option>
+    </select>
+    </div>
+
+    <div class="acciones">
+        <button class="boton" (click)="limpiar()">Limpiar</button>
+    </div>
+</section>
+
+<!-- Listado de juegos en formato tarjetas -->
+<section class="juegos">
+    <article class="tarjeta seccion" *ngFor="let j of juegosFiltrados">
+        <div class="contenedor-imagen">
+            <img [src]="j.portada" [alt]="j.nombre" (error)="$any($event.target).src='assets/img/juegos/placeholder.jpg'" />
+        </div>
+
+        <div class="contenido">
+            <h2>{{ j.nombre }}</h2>
+
+            <p class="datos">
+                <span class="etiqueta">{{ j.generacion }}</span>
+                <span class="etiqueta">{{ j.plataforma }}</span>
+                <span class="etiqueta">{{ j.anio }}</span>
+            </p>
+
+            <p class="region"><strong>Región:</strong> {{ j.region }}</p>
+        </div>
+    </article>
+</section>
+
+<p *ngIf="juegosFiltrados.length === 0" class="mensajeError">
+    No hay resultados con esos filtros.
+</p>

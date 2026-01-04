@@ -1,0 +1,37 @@
+<h1>Entrenadores</h1>
+
+<!-- Botón para ir al formulario en modo "nuevo" -->
+<button class="boton" [routerLink]="['/entrenadores/nuevo']">Añadir entrenador</button>
+
+<p *ngIf="cargando">Cargando...</p>
+<p class="mensajeError" *ngIf="error">{{ error }}</p>
+
+<!-- Listado de entrenadores (tarjetas) -->
+<section class="entrenadores" *ngIf="!cargando">
+    <article class="tarjeta" *ngFor="let e of items">
+        <div class="contenedor-imagen">
+            <img [src]="e.avatar" [alt]="e.nombre" (error)="$any($event.target).src='assets/img/juegos/placeholder.jpg'" />
+        </div>
+
+        <div class="contenido">
+            <h2>{{ e.nombre }} {{ e.apellidos }}</h2>
+
+            <p class="datos">
+                <span class="etiqueta">{{ e.region }}</span>
+                <span class="etiqueta">{{ e.edad }} años</span>
+            </p>
+
+            <p class="favorito"><strong>Favorito:</strong> {{ e.pokemonFavorito }}</p>
+            <!-- Previsualización del Pokémon favorito usando el sprite de PokéAPI -->
+            <div class="pokemon">
+                <img class="pokemon-previsualizado" *ngIf="getSpriteFavorito(e.pokemonFavorito) as sprite" [src]="sprite" alt="sprite favorito" (error)="$any($event.target).style.display='none'" />
+            </div>
+
+            <div class="acciones">
+                <button class="boton" [routerLink]="['/entrenadores', e.id]">Ver</button>
+                <button class="boton" [routerLink]="['/entrenadores', e.id, 'editar']">Editar</button>
+                <button class="boton" (click)="borrar(e)">Borrar</button>
+            </div>
+        </div>
+    </article>
+</section>

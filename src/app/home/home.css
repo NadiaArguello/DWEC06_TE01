@@ -1,0 +1,43 @@
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+.img_izq {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255, 0.75);
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    min-height: 60vh;
+}
+
+article div {
+    display: flex;
+    justify-content: center;
+}
+
+article img {
+    height: 300px;
+}
+
+.comentario {
+    color: purple;
+    text-align: center;
+}

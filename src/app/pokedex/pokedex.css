@@ -1,0 +1,440 @@
+.mensajeError {
+    background: #fff;
+    padding: 8px;
+    border: 1px solid #000;
+    margin-bottom: 12px;
+}
+
+.contenedor-principal {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.seccion {
+    background-color: rgb(255, 255, 255, 0.9);
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 60vh;
+    justify-content: flex-start;
+}
+
+.filtros>section {
+    flex: 0 0 auto;
+}
+
+.campo {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.campo label {
+    font-weight: bold;
+}
+
+.campo select {
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #9e9e9e;
+    outline: none;
+    width: 100%;
+    padding: 6px;
+}
+
+.boton {
+    width: auto;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff3b3b, #d60000);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(214, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pokelogo {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokelogo img {
+    max-height: 100%;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.botones-forma {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.boton-forma {
+    width: auto;
+    padding: 6px 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 55vw;
+    height: 62.5vh;
+    min-height: 60vh;
+}
+
+.lista {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex: 0 0 auto;
+}
+
+.mostrando {
+    width: 30%;
+}
+
+.seccion-seleccionar {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: start;
+    justify-content: center;
+}
+
+.seccion-seleccionar label {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.seleccionar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    gap: 10px;
+}
+
+.elegir {
+    border-radius: 10px;
+    border: 1px solid #9e9e9e;
+    outline: none;
+    width: 60%;
+}
+
+.boton-seleccion {
+    width: auto;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff3b3b, #d60000);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(214, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    min-width: 20%;
+}
+
+.visualizacion-3D {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* min-height: 0 permite que el visor 3D pueda encajar en el contenedor sin desbordarse */
+}
+
+.visualizacion-3D {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.viewer-wrap {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.visor-3D {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
+    background-image: url('../../assets/img/fondo_3D.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.informacion {
+    width: 20vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, .25);
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
+}
+
+.info-contenido {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-detalle {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.8vh, 10px);
+}
+
+.info-titulo {
+    margin: 0;
+    font-size: clamp(14px, 1.6vh, 18px);
+    line-height: 1.1;
+}
+
+.informacion-img {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacion-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.info-texto {
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+.info-texto p {
+    margin: clamp(2px, 0.5vh, 6px) 0;
+    line-height: 1.15;
+    font-size: clamp(12px, 1.4vh, 14px);
+}
+
+.info-texto h4 {
+    margin: clamp(4px, 0.8vh, 10px) 0 clamp(2px, 0.4vh, 4px);
+    font-size: clamp(12px, 1.4vh, 14px);
+}
+
+.stats {
+    margin: 0;
+    padding-left: 16px;
+    font-size: clamp(12px, 1.35vh, 14px);
+    line-height: 1.15;
+}
+
+.stats li {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 10px;
+}
+
+.chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: clamp(11px, 1.25vh, 12px);
+    font-weight: 800;
+    background: rgba(255, 255, 255, .75);
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+.info-contenido::-webkit-scrollbar {
+    width: 8px;
+}
+
+.info-contenido::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .15);
+    border-radius: 10px;
+}
+
+.info-contenido::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .25);
+}
+
+
+/*En esta sección defino un fondo por cada tipo de Pokémon, para que cambie el color de la tarjeta donde se muestra
+la información del pokemon seleccionado. Mirará cual es el tipo principal del Pokémon y cambiará el color*/
+
+
+/* Normal */
+
+.tipo-normal {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(245, 245, 245, .92));
+}
+
+
+/* Fuego */
+
+.tipo-fire {
+    box-shadow: 0 10px 26px rgba(255, 60, 60, .25);
+    background: linear-gradient(180deg, rgba(255, 130, 130, .55), rgba(255, 255, 255, .9));
+}
+
+
+/* Agua */
+
+.tipo-water {
+    box-shadow: 0 10px 26px rgba(60, 140, 255, .25);
+    background: linear-gradient(180deg, rgba(120, 180, 255, .55), rgba(255, 255, 255, .9));
+}
+
+
+/* Planta */
+
+.tipo-grass {
+    box-shadow: 0 10px 26px rgba(60, 200, 90, .25);
+    background: linear-gradient(180deg, rgba(120, 220, 140, .55), rgba(255, 255, 255, .9));
+}
+
+
+/* Eléctrico */
+
+.tipo-electric {
+    box-shadow: 0 10px 26px rgba(255, 215, 60, .25);
+    background: linear-gradient(180deg, rgba(255, 235, 120, .75), rgba(255, 255, 255, .9));
+}
+
+
+/* Bicho */
+
+.tipo-bug {
+    background: linear-gradient(180deg, rgba(190, 220, 110, .65), rgba(255, 255, 255, .9));
+}
+
+
+/* Hada */
+
+.tipo-fairy {
+    background: linear-gradient(180deg, rgba(255, 170, 210, .65), rgba(255, 255, 255, .9));
+}
+
+
+/* Psíquico */
+
+.tipo-psychic {
+    background: linear-gradient(180deg, rgba(210, 170, 255, .65), rgba(255, 255, 255, .9));
+}
+
+
+/* Veneno */
+
+.tipo-poison {
+    background: linear-gradient(180deg, rgba(170, 90, 255, .55), rgba(255, 255, 255, .9));
+}
+
+
+/* Siniestro */
+
+.tipo-dark {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .25);
+    background: linear-gradient(180deg, rgba(50, 50, 50, .70), rgba(255, 255, 255, .9));
+}
+
+.tipo-dark>h2 {
+    color: #111;
+}
+
+
+/* Tierra */
+
+.tipo-ground {
+    background: linear-gradient(180deg, rgba(200, 160, 110, .65), rgba(255, 255, 255, .9));
+}
+
+
+/* Roca */
+
+.tipo-rock {
+    background: linear-gradient(180deg, rgba(170, 170, 170, .55), rgba(255, 255, 255, .9));
+}
+
+
+/* Acero */
+
+.tipo-steel {
+    background: linear-gradient(180deg, rgba(190, 205, 215, .75), rgba(255, 255, 255, .9));
+}
+
+
+/* Hielo */
+
+.tipo-ice {
+    background: linear-gradient(180deg, rgba(160, 230, 255, .70), rgba(255, 255, 255, .9));
+}
+
+
+/* Dragón */
+
+.tipo-dragon {
+    background: linear-gradient(180deg, rgba(245, 210, 120, .75), rgba(255, 255, 255, .9));
+}
+
+
+/* Volador */
+
+.tipo-flying {
+    background: linear-gradient(180deg, rgba(255, 245, 180, .70), rgba(255, 255, 255, .9));
+}
+
+
+/* Lucha */
+
+.tipo-fighting {
+    background: linear-gradient(180deg, rgba(255, 175, 120, .70), rgba(255, 255, 255, .9));
+}

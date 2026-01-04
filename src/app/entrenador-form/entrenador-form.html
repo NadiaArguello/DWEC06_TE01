@@ -1,0 +1,69 @@
+<div class="form-header">
+    <h1 style="margin:0;">
+        {{ editMode ? 'Editar' : 'Nuevo' }} entrenador
+        <span *ngIf="editMode && model.nombre"> - {{ model.nombre }} {{ model.apellidos }}</span>
+    </h1>
+
+
+</div>
+
+<p *ngIf="cargando">Cargando...</p>
+<p class="mensajeError" *ngIf="error">{{ error }}</p>
+
+<!-- Formulario: en modo edición precarga datos; en modo nuevo empieza vacío -->
+<form *ngIf="!cargando" #f="ngForm" (ngSubmit)="guardar(f)" novalidate class="form">
+    <div class="cerrar"><button type="button" class="boton" title="Cerrar" (click)="cerrar()">✕</button></div>
+    <div class="campo">
+        <label>Nombre</label>
+        <input name="nombre" [(ngModel)]="model.nombre" required minlength="2" #nombre="ngModel" />
+        <div class="mensajeError" *ngIf="nombre.invalid && nombre.touched">Obligatorio (mín 2).</div>
+    </div>
+
+    <div class="campo">
+        <label>Apellidos</label>
+        <input name="apellidos" [(ngModel)]="model.apellidos" required minlength="2" #apellidos="ngModel" />
+        <div class="mensajeError" *ngIf="apellidos.invalid && apellidos.touched">Obligatorio (mín 2).</div>
+    </div>
+
+    <div class="campo">
+        <label>Edad</label>
+        <input type="number" name="edad" [(ngModel)]="model.edad" required min="1" max="120" #edad="ngModel" />
+        <div class="mensajeError" *ngIf="edad.invalid && edad.touched">Edad válida (1–120).</div>
+    </div>
+
+    <div class="campo">
+        <label>Región</label>
+        <input name="region" [(ngModel)]="model.region" required #region="ngModel" />
+        <div class="mensajeError" *ngIf="region.invalid && region.touched">Obligatorio.</div>
+    </div>
+
+    <div class="campo">
+        <label>Pokémon favorito</label>
+
+        <p *ngIf="cargandoPokemon">Cargando lista de Pokémon...</p>
+        <p class="mensajeError" *ngIf="errorPokemon">{{ errorPokemon }}</p>
+
+        <select name="pokemonFavorito" [(ngModel)]="model.pokemonFavorito" (change)="onPokemonFavoritoChange(model.pokemonFavorito)" required #pokemonFavorito="ngModel" [disabled]="cargandoPokemon || listaPokemon.length === 0">
+                <option value="" disabled>Selecciona un Pokémon</option>
+                <option *ngFor="let p of listaPokemon" [value]="p.name">#{{ p.id }} - {{ p.name }}</option>
+            </select>
+
+        <div class="pokemon"><img class="imagen-formulario" *ngIf="spriteFavorito" [src]="spriteFavorito" alt="sprite" width="96" height="96" /></div>
+
+        <div class="mensajeError" *ngIf="pokemonFavorito.invalid && pokemonFavorito.touched">
+            Obligatorio.
+        </div>
+    </div>
+
+    <div class="campo">
+        <label>Avatar (URL)</label>
+        <input name="avatar" [(ngModel)]="model.avatar" required #avatar="ngModel" placeholder="https://..." />
+        <div class="mensajeError" *ngIf="avatar.invalid && avatar.touched">Obligatorio.</div>
+
+        <div class="pokemon"><img class="imagen-formulario" *ngIf="model.avatar" [src]="model.avatar" (error)="$any($event.target).src='assets/img/juegos/placeholder.jpg'" /></div>
+    </div>
+
+    <button class="boton" type="submit" [disabled]="f.invalid || guardando">
+            {{ guardando ? 'Guardando...' : 'Guardar' }}
+        </button>
+</form>

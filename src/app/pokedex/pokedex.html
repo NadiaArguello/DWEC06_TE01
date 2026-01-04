@@ -1,0 +1,140 @@
+<h1>PokéDex</h1>
+
+<div class="mensajeError" *ngIf="error">
+    {{ error }}
+</div>
+
+<section class="contenedor-principal">
+
+    <!-- Panel de filtros -->
+    <aside class="filtros seccion">
+        <section>
+            <h2 style="margin-top:0;">Filtros</h2>
+
+            <div class="campo">
+                <label>Tipo 1</label><br />
+                <select [(ngModel)]="tipo1">
+                  <option value="">(Sin filtro)</option>
+                  <option *ngFor="let t of tipos" [value]="t.value">{{ t.label }}</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>Tipo 2</label><br />
+                <select [(ngModel)]="tipo2">
+                  <option value="">(Sin filtro)</option>
+                  <option *ngFor="let t of tipos" [value]="t.value">{{ t.label }}</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>Generación</label><br />
+                <select [(ngModel)]="gen">
+                    <option *ngFor="let g of generaciones" [value]="g.key">{{ g.label }}</option>
+                </select>
+            </div>
+            <div class="acciones">
+                <button (click)="aplicarFiltros()" class="boton">Aplicar filtros</button>
+                <button (click)="quitarFiltros()" class="boton">Quitar filtros</button>
+            </div>
+        </section>
+        <div class="pokelogo">
+            <img src="assets/img/pokemon_logo.png" />
+        </div>
+    </aside>
+
+    <!-- Columna central: lista + visor 3D -->
+    <main class="centro">
+        <section class="lista seccion ">
+            <div class="mostrando">
+                <h2>Lista de Pokémon</h2>
+
+                <p *ngIf="cargandoInicial">Cargando lista completa...</p>
+                <p *ngIf="!cargandoInicial && cargandoFiltrado">Aplicando filtros...</p>
+
+                <p *ngIf="!cargandoInicial && !cargandoFiltrado">
+                    Mostrando {{ listaVisible.length }} Pokémon
+                    <span *ngIf="listaCompleta.length">de {{ listaCompleta.length }}</span>.
+                </p>
+            </div>
+            <div class="seccion-seleccionar">
+                <label for="pokemonSelect">Selecciona Pokémon:</label><br />
+                <div class="seleccionar">
+                    <ng-container *ngIf="true">
+                        <select class="elegir" *ngIf="pokemonSelectKey >= 0" [attr.data-key]="pokemonSelectKey" id="pokemonSelect" [(ngModel)]="pokemonSeleccionadoValue" (change)="onSeleccionarPokemon($any($event.target).value)" style="width: 100%; max-width: 520px; padding: 8px;">
+                        <option value="" disabled>Elige un Pokémon</option>
+                        <option *ngFor="let p of listaVisible" [value]="p.id">#{{ p.id }} - {{ p.name }}</option>
+                        </select>
+                    </ng-container>
+                    <button (click)="mostrarDatosY3D()" class="boton-seleccion">Mostrar datos</button>
+                </div>
+
+            </div>
+        </section>
+        <section class="visualizacion-3D seccion">
+            <h2>3D del Pokémon:</h2>
+            <p *ngIf="!detalle && !cargandoDetalle">Pulsa “Mostrar datos” para ver el 3D.</p>
+            <p *ngIf="cargando3D">Cargando modelo 3D...</p>
+            <p *ngIf="error3D">{{ error3D }}</p>
+
+            <div *ngIf="mostrar3D && modelUrl" class="viewer-wrap">
+                <div *ngIf="formas3D.length > 1" class="botones-forma">
+                    <button class="boton boton-forma" *ngFor="let f of formas3D" (click)="cambiarForma3D(f.formName)" [style.fontWeight]="formaSeleccionada === f.formName ? 'bold' : 'normal'">{{ f.formName }}</button>
+                </div>
+
+                <model-viewer class="visor-3D" [attr.src]="modelUrl" camera-controls></model-viewer>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Panel derecho: información del Pokémon seleccionado -->
+    <aside class="informacion seccion" [ngClass]="getTipoClasePrincipal()">
+        <h2 style="margin-top:0;">Información</h2>
+
+        <div class="info-contenido">
+
+            <p *ngIf="!detalle && !cargandoDetalle">
+                Pulsa “Mostrar datos” para ver el detalle.
+            </p>
+
+            <p *ngIf="cargandoDetalle">Cargando datos...</p>
+
+            <div *ngIf="detalle" class="info-detalle">
+
+                <h3 class="info-titulo">
+                    {{ detalle.name }} (#{{ detalle.id }})
+                </h3>
+
+                <div class="informacion-img">
+                    <img *ngIf="detalle.sprites.front_default" [src]="detalle.sprites.front_default" alt="sprite" />
+                </div>
+
+                <div class="info-texto">
+                    <p *ngIf="especie">
+                        <strong>Generación:</strong> {{ getGeneracionES(especie.generation.name) }}
+                    </p>
+
+                    <p><strong>Altura:</strong> {{ detalle.height /10}}m</p>
+                    <p><strong>Peso:</strong> {{ detalle.weight /10}}kg</p>
+
+                    <h4>Tipos</h4>
+                    <div class="chips">
+                        <span class="chip" *ngFor="let t of detalle.types">
+            {{ getTipoES(t.type.name) }}
+          </span>
+                    </div>
+
+                    <h4>Estadísticas base</h4>
+                    <ul class="stats">
+                        <li *ngFor="let s of detalle.stats">
+                            {{ getStatES(s.stat.name) }}: {{ s.base_stat }}
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+
+</section>
