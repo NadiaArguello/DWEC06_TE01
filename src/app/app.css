@@ -20,7 +20,7 @@ header div {
     justify-content: center;
     height: 15vh;
     /* Decoración superior con Pokéball + separador. El header se verá como una Pokéball, con su botón en el medio */
-    background: url('/assets/img/ball_arriba.png') bottom center / 5% no-repeat, linear-gradient( to bottom, transparent calc(100% - 2px), #000 calc(100% - 2px)), red;
+    background: url('../assets/img/ball_arriba.png') bottom center / 5% no-repeat, linear-gradient( to bottom, transparent calc(100% - 2px), #000 calc(100% - 2px)), red;
     padding: 1vh 0px;
 }
 
@@ -38,7 +38,7 @@ header nav {
     height: 3vh;
     width: 100%;
     /* Decoración inferior con Pokéball + separador. El header se verá como una Pokéball, con su botón en el medio */
-    background: url('/assets/img/ball_abajo.png') top center / 5% no-repeat, linear-gradient( to top, transparent calc(100% - 2px), #000 calc(100% - 2px)), white;
+    background: url('../assets/img/ball_abajo.png') top center / 5% no-repeat, linear-gradient( to top, transparent calc(100% - 2px), #000 calc(100% - 2px)), white;
 }
 
 header nav a {

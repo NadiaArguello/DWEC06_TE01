@@ -27,7 +27,7 @@
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
-                        "baseHref": "/DWEC06_TE01/",
+                        "baseHref": "/pokeMundo/",
                         "outputPath": "docs",
                         "browser": "src/main.ts",
                         "tsConfig": "tsconfig.app.json",
